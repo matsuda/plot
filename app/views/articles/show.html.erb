@@ -1,0 +1,5 @@
+<%- if @article -%>
+<h2><%= @article.title %></h2>
+<p><%= @article.date.strftime('%Y/%m/%d') %></p>
+<%= @article.content %>
+<%- end -%>

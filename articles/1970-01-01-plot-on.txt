@@ -1,0 +1,14 @@
+title: Plot on!
+date: 1970/01/01
+
+This post is a first article written with plot.  
+
+Plot is a minimal blog engine with Ruby on Rails 3 inspired [toto][].  
+Plot is assumed deployed in [Heroku].
+
+See the [Plot repository][plot].
+
+
+[plot]: http://github.com/matsuda/plot
+[toto]: http://cloudhead.io/toto
+[Heroku]: http://heroku.com
