@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   def index
     @archives = Archives.archive
+    @article = @archives.shift
   end
 
   def show

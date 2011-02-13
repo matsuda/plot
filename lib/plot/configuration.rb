@@ -8,6 +8,7 @@ class Configuration
   attr_accessor :host
   attr_accessor :format
   attr_accessor :limit
+  attr_accessor :summary_length
 
   def initialize
     default_config.each do |key, value|
@@ -17,13 +18,14 @@ class Configuration
 
   def default_config
     {
-      :author       => ENV['USER'],
-      :title        => %Q{My Blog},
-      :description  => %Q{My Blog's description},
-      :keywords     => %Q{Blog},
-      :host         => '127.0.0.1',
-      :format       => 'txt',
-      :limit        => 20
+      :author         =>  ENV['USER'],
+      :title          =>  %Q{My Blog},
+      :description    =>  %Q{My Blog's description},
+      :keywords       =>  %Q{Blog},
+      :host           =>  '127.0.0.1',
+      :format         =>  'txt',
+      :limit          =>  20,
+      :summary_length =>  100,
     }
   end
 

@@ -19,12 +19,17 @@ class Article
   end
 
   def to_html
-    load_file if @content.blank?
-    raise Blog::ArticleNotFound if @content.blank?
-    Markdown.new(@content, :smart).to_html.html_safe
+    raise Blog::ArticleNotFound if self.content.blank?
+    Markdown.new(self.content, :smart).to_html.html_safe
   end
-  alias :content to_html
-  alias :to_s to_html
+  alias :body to_html
+  # alias :to_s to_html
+
+  def summary
+    raise Blog::ArticleNotFound if self.content.blank?
+    content = Markdown.new(self.content, :smart).to_html
+    ApplicationController.helpers.truncate(content, :length => Blog.summary_length).html_safe
+  end
 
   def url
     "http://#{Blog.host}#{path}"
