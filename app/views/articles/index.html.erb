@@ -5,6 +5,7 @@
 <%- end -%>
 
 <%- if @archives.present? -%>
+<p>other articles</p>
 <ul>
   <%- @archives.each do |article| -%>
   <li><%= link_to article.title, article.path %></li>

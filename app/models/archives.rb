@@ -4,7 +4,7 @@ class Archives < Array
       limit = options.delete(:limit) || Blog.limit
       self.new.tap do |archives|
         idx = 0
-        Dir[File.join(Article.articles_path, '*')].each do |article_file|
+        self.articles.each do |article_file|
           break if idx >= limit
           slug = File.basename(article_file)
           slug =~ /^(\d{4})-(\d{2})-(\d{2})-(.+)\.\w+$/
@@ -12,6 +12,10 @@ class Archives < Array
           idx += 1
         end
       end
+    end
+
+    def articles
+      Dir[File.join(Article.articles_path, '*')].sort_by{ |article| File.basename(article) }
     end
   end
 end
