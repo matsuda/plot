@@ -27,12 +27,12 @@ class Article
   alias :to_s to_html
 
   def url
-    "http://#{Blog.host}/#{path}"
+    "http://#{Blog.host}#{path}"
   end
   alias :permalink url
 
   def path
-    "article/#{meta.date.strftime("%Y/%m/%d")}/#{slug}"
+    "/article/#{meta.date.strftime("%Y/%m/%d")}/#{slug}"
   end
 
   private
