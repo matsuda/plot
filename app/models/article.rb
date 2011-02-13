@@ -12,9 +12,9 @@ class Article
   attr_accessor :meta
 
   def initialize(year, month, day, slug)
-    date = Date.new(year.to_i, month.to_i, day.to_i)
+    @published_at = Date.new(year.to_i, month.to_i, day.to_i)
     @slug = slug
-    @meta = Meta.new('date' => date)
+    @meta = Meta.new
     load_file
   end
 
@@ -37,7 +37,7 @@ class Article
   alias :permalink url
 
   def path
-    "/article/#{meta.date.strftime("%Y/%m/%d")}/#{slug}"
+    "/article/#{self.published_at.strftime("%Y/%m/%d")}/#{slug}"
   end
 
   private
@@ -52,7 +52,7 @@ class Article
   end
 
   def article_filename
-    [ [meta.date.strftime("%Y-%m-%d"), slug].join('-'), Blog.format ].join('.')
+    [ [self.published_at.strftime("%Y-%m-%d"), slug].join('-'), Blog.format ].join('.')
   rescue
     raise Blog::ArticleNotFound
   end
